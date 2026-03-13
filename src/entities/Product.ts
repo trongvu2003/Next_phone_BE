@@ -3,20 +3,20 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 @Entity('products')
 export default class Products {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  price: number;
+  price!: number;
 
   @Column()
-  description: string;
+  description!: string;
 
   @Column()
-  createdAt: Date;
+  createdAt!: Date;
 
   @Column()
-  updatedAt: Date;
+  updatedAt!: Date;
 }
