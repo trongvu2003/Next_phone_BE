@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+  Delete,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuthService } from '../auth/auth.service';
 
@@ -21,7 +30,7 @@ export class UserController {
   }
   @Get('/:id')
   findOne(@Param('id') id: string) {
-    return 'user' + id;
+    return this.userService.findOne(parseInt(id));
   }
 
   @Get('login')
@@ -34,6 +43,16 @@ export class UserController {
   //   }
   @Post()
   create(@Body() body: any) {
-    return body;
+    return this.userService.create(body);
+  }
+
+  @Patch('/:id')
+  update(@Param('id') id: string, @Body() body: any) {
+    return this.userService.update(parseInt(id), body);
+  }
+
+  @Delete('/:id')
+  delete(@Param('id') id: string) {
+    return this.userService.delete(parseInt(id));
   }
 }

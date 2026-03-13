@@ -6,6 +6,9 @@ import { AuthService } from './modules/auth/auth.service';
 import { DbService } from './db/db.service';
 import { AuthModule } from './modules/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProductsModule } from './modules/products/products.module';
+import Products from './entities/Product';
+import { User } from './entities/user.entity';
 @Module({
   imports: [
     UserModule,
@@ -18,8 +21,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: 'Vubui096@',
       database: 'nextphone',
       autoLoadEntities: true,
+      entities: [Products, User],
       synchronize: true,
     }),
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthService, DbService],
