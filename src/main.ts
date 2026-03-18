@@ -5,6 +5,7 @@ import {
   ValidationError,
   ValidationPipe,
 } from '@nestjs/common';
+import { LoggingMiddleware } from './middleware/logging/logging.middleware';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -20,6 +21,7 @@ async function bootstrap() {
       },
     }),
   );
+  // app.use(new LoggingMiddleware().use);
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
