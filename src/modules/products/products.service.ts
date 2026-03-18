@@ -12,6 +12,9 @@ export class ProductsService {
   findAll() {
     return this.productsRepository.find();
   }
+  findOne(id: number) {
+    return this.productsRepository.findOneBy({ id });
+  }
   create(productData: Partial<Products>) {
     const product = this.productsRepository.create(productData);
     product.createdAt = new Date();
